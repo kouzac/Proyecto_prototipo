@@ -5,7 +5,9 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     public float speed;
-    // Start is called before the first frame update
+
+    public float dmg=1;
+    
     void Start()
     {
         
@@ -24,7 +26,7 @@ public class enemy : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            //collision.GetComponent<HP>().Damage(dmg);
+            collision.GetComponent<HP>().Damage(dmg);
             Destroy(gameObject);
         }
     }

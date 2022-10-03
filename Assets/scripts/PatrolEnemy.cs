@@ -6,6 +6,7 @@ public class PatrolEnemy : MonoBehaviour
 {
     public float speed;
     public float distance;
+    public float dmg = 1;
     public bool Right;
     private Rigidbody2D rb;
     public Transform groundController;
@@ -42,7 +43,7 @@ public class PatrolEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //collision.GetComponent<HP>().Damage(dmg);
+            collision.GetComponent<HP>().Damage(dmg);
             Destroy(gameObject);
         }
     }

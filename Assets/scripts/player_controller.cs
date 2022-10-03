@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class player_controller : MonoBehaviour
 {
 public float JumpForce;
