@@ -9,19 +9,23 @@ public float JumpForce;
     private float jumpTimeCount;
     public bool isGrounded;
     public bool isJumping;
+    private bool isShielded;
+    public GameObject shield;
     public LayerMask ground;
     private Rigidbody2D RB;
     private Collider2D PlayerCollider;
-    // Start is called before the first frame update
+    
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         PlayerCollider = GetComponent<Collider2D>();
+        isShielded = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Shield();
         isGrounded = Physics2D.IsTouchingLayers(PlayerCollider, ground);
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -48,5 +52,21 @@ public float JumpForce;
         {
             isJumping = false;
         }
+    }
+
+    void Shield()
+    {
+        if(Input.GetKey(KeyCode.S) && !isShielded)
+        {
+            shield.SetActive(true);
+            isShielded = true;
+            Invoke("noShield", 3f);
+        }
+    }
+
+    void noShield()
+    {
+        shield.SetActive(false);
+        isShielded = false;
     }
 }
