@@ -5,14 +5,17 @@ using UnityEngine;
 public class naraja : MonoBehaviour
 {
     public float speed;
-    //public float valueHP = 1;
-    // Start is called before the first frame update
+    public float magnetSpeed;
+    private GameObject _player;
+    public static bool _magnetOn = false;
+
+
     void Start()
     {
-        
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -20,12 +23,27 @@ public class naraja : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(_magnetOn)
+        {
+            magnetEffect();
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
+            magnetEffect();
             Destroy(gameObject);
         }
     }
+
+    void magnetEffect()
+    {
+        transform.position = Vector3.Lerp(this.transform.position, _player.transform.position, magnetSpeed * Time.deltaTime);
+    }
+
+   
+
 }

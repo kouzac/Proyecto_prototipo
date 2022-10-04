@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Orange
+  - Magnet
   layers:
   - Default
   - TransparentFX

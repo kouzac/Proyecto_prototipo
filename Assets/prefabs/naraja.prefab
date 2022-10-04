@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  magnetSpeed: 2
 --- !u!58 &8991032613432262613
 CircleCollider2D:
   m_ObjectHideFlags: 0

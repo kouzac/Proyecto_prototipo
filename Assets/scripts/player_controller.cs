@@ -11,6 +11,7 @@ public float JumpForce;
     public bool isGrounded;
     public bool isJumping;
     private bool isShielded;
+    private bool doubleJump;
     public GameObject shield;
     public LayerMask ground;
     private Rigidbody2D RB;
@@ -23,17 +24,26 @@ public float JumpForce;
         isShielded = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Shield();
         isGrounded = Physics2D.IsTouchingLayers(PlayerCollider, ground);
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        
+        if(isGrounded && !Input.GetButton("Jump"))
         {
+            doubleJump = false;
+        }
+        
+        if(Input.GetButtonDown("Jump"))
+        {
+            if(isGrounded || doubleJump)
+            {
             isJumping = true;
             jumpTimeCount = jumpTime;
-            //RB.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             RB.velocity = Vector2.up * JumpForce;
+            doubleJump = !doubleJump;
+
+            }
         }
 
         if(Input.GetKey(KeyCode.Space) && isJumping == true)
