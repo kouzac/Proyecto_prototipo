@@ -22,7 +22,6 @@ public class ScoreManager : MonoBehaviour
         if(collision.CompareTag("Orange"))
         {
             _score++;
-            Debug.Log(_score);
         }
     }
 }
