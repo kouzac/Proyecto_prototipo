@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Teleport : MonoBehaviour
 {
     public float speed;
-    public string scene;
+
     void Start()
     {
         
@@ -25,7 +25,14 @@ public class Teleport : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(scene);
+            if(backgroundSwap._bg1 == true)
+            {
+                backgroundSwap._swap=true;
+            }
+            else
+            {
+                backgroundSwap._swap2 = true;
+            }
             Destroy(gameObject);
         }
     }
