@@ -10,7 +10,7 @@ public float JumpForce;
     private float jumpTimeCount;
     public bool isGrounded;
     public bool isJumping;
-    public bool isShielded;
+    public static bool _isShielded;
     private bool doubleJump;
     public GameObject shield;
     public LayerMask ground;
@@ -66,7 +66,7 @@ public float JumpForce;
             isJumping = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.S) && isShielded==false)
+        if(Input.GetKeyDown(KeyCode.S) && _isShielded==false)
         {
             ActiateShield();
         }
@@ -75,13 +75,13 @@ public float JumpForce;
     void ActiateShield()
     {
         shield.SetActive(true);
-        isShielded = true;
+        _isShielded = true;
         Invoke("DeactivateShield", 3f);
     }
 
     void DeactivateShield()
     {
         shield.SetActive(false);
-        isShielded = false;
+        _isShielded = false;
     }
 }

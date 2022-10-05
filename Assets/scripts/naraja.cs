@@ -42,8 +42,12 @@ public class naraja : MonoBehaviour
     void magnetEffect()
     {
         transform.position = Vector3.Lerp(this.transform.position, _player.transform.position, magnetSpeed * Time.deltaTime);
+        Invoke("endEffect", 2f);
     }
 
-   
+   void endEffect()
+    {
+        _magnetOn = false;
+    }
 
 }

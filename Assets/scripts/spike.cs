@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class spike : MonoBehaviour
 {
     public float speed;
-    // Start is called before the first frame update
+    public player_controller shield;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -23,7 +22,7 @@ public class spike : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && player_controller._isShielded == false)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
