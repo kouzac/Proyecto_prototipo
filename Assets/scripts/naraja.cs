@@ -44,7 +44,7 @@ public class naraja : MonoBehaviour
     {
         transform.position = Vector3.Lerp(this.transform.position, _player.transform.position, magnetSpeed * Time.deltaTime);
         ScoreManager._score *= 1;
-        Invoke("endEffect", 2f);
+        Invoke("endEffect", 30f);
     }
 
    void endEffect()
