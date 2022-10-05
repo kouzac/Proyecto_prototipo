@@ -41,7 +41,7 @@ public class PatrolEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && player_controller._isShielded==false)
         {
             collision.GetComponent<HP>().Damage(dmg);
             Destroy(gameObject);

@@ -13,6 +13,7 @@ public class naraja : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        endEffect();
     }
 
 
@@ -42,6 +43,7 @@ public class naraja : MonoBehaviour
     void magnetEffect()
     {
         transform.position = Vector3.Lerp(this.transform.position, _player.transform.position, magnetSpeed * Time.deltaTime);
+        ScoreManager._score *= 1;
         Invoke("endEffect", 2f);
     }
 

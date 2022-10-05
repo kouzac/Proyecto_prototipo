@@ -76,12 +76,20 @@ public float JumpForce;
     {
         shield.SetActive(true);
         _isShielded = true;
-        Invoke("DeactivateShield", 3f);
+        Invoke("DeactivateShield", 2f);
     }
 
     void DeactivateShield()
     {
         shield.SetActive(false);
         _isShielded = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            DeactivateShield();
+        }
     }
 }

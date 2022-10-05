@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score;
+    public static int _score;
     public Text scoreDisplay;
     void Start()
     {
-        
+        _score = 0;
     }
     
     void Update()
     {
-        scoreDisplay.text = score.ToString();
+        scoreDisplay.text = _score.ToString();
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Orange"))
         {
-            score++;
-            Debug.Log(score);
+            _score++;
+            Debug.Log(_score);
         }
     }
 }
